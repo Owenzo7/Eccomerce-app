@@ -7,6 +7,7 @@ export default class App extends Component {
 
     this.state = {
       items: [],
+      searchField: "",
     };
   }
 
@@ -26,6 +27,9 @@ export default class App extends Component {
   }
 
   render() {
+    const filteredItems = this.state.items.filter((item) => {
+      return item.title.toLocaleLowerCase().includes(this.state.searchField);
+    });
     return (
       <div className="App">
         <input
@@ -35,18 +39,14 @@ export default class App extends Component {
           onChange={(event) => {
             console.log(event.target.value);
 
-            const searchitems = event.target.value.toLocaleLowerCase();
-
-            const filteredItems = this.state.items.map((item) => {
-              return item.title.toLocaleLowerCase().includes(searchitems);
-            });
+            const searchField = event.target.value.toLocaleLowerCase();
 
             this.setState(() => {
-              return {items: filteredItems};
+              return { searchField };
             });
           }}
         />
-        {this.state.items.map((item) => {
+        {filteredItems.map((item) => {
           return (
             <div key={item.id}>
               <h1>{item.title}</h1>
