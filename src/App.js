@@ -26,9 +26,22 @@ export default class App extends Component {
       );
   }
 
+  onSearchChange = (event) => {
+    console.log(event.target.value);
+
+    const searchField = event.target.value.toLocaleLowerCase();
+
+    this.setState(() => {
+      return { searchField };
+    });
+  }
+
   render() {
-    const filteredItems = this.state.items.filter((item) => {
-      return item.title.toLocaleLowerCase().includes(this.state.searchField);
+
+    const {items,searchField} = this.state;
+    const {onSearchChange} = this;
+    const filteredItems = items.filter((item) => {
+      return item.title.toLocaleLowerCase().includes(searchField);
     });
     return (
       <div className="App">
@@ -36,15 +49,7 @@ export default class App extends Component {
           className="search-box"
           type="search"
           placeholder="Find items"
-          onChange={(event) => {
-            console.log(event.target.value);
-
-            const searchField = event.target.value.toLocaleLowerCase();
-
-            this.setState(() => {
-              return { searchField };
-            });
-          }}
+          onChange={onSearchChange}
         />
         {filteredItems.map((item) => {
           return (
