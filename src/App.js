@@ -1,5 +1,6 @@
 import "./App.css";
 import React, { Component } from "react";
+import Itemlists from "./Components/Itemlists/Itemlists.component";
 
 export default class App extends Component {
   constructor() {
@@ -34,12 +35,11 @@ export default class App extends Component {
     this.setState(() => {
       return { searchField };
     });
-  }
+  };
 
   render() {
-
-    const {items,searchField} = this.state;
-    const {onSearchChange} = this;
+    const { items, searchField } = this.state;
+    const { onSearchChange } = this;
     const filteredItems = items.filter((item) => {
       return item.title.toLocaleLowerCase().includes(searchField);
     });
@@ -51,13 +51,15 @@ export default class App extends Component {
           placeholder="Find items"
           onChange={onSearchChange}
         />
-        {filteredItems.map((item) => {
-          return (
-            <div key={item.id}>
-              <h1>{item.title}</h1>
-            </div>
-          );
-        })}
+          {/*{filteredItems.map((item) => {
+            return (
+              <div key={item.id}>
+                <h1>{item.title}</h1>
+              </div>
+            );
+          })}*/}
+
+          <Itemlists />
       </div>
     );
   }
