@@ -1,6 +1,7 @@
 import "./App.css";
 import React, { Component } from "react";
 import Itemlists from "./Components/Itemlists/Itemlists.component";
+import Searchbox from "./Components/SearchBox/Searchbox.component";
 
 export default class App extends Component {
   constructor() {
@@ -45,12 +46,8 @@ export default class App extends Component {
     });
     return (
       <div className="App">
-        <input
-          className="search-box"
-          type="search"
-          placeholder="Find items"
-          onChange={onSearchChange}
-        />
+       
+      <Searchbox onChangeHandler={onSearchChange} placeholder="search Items" className="search-box" />
 
         <Itemlists Items={filteredItems} />
       </div>
