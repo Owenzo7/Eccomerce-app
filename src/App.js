@@ -47,7 +47,7 @@ export default class App extends Component {
     return (
       <div className="App">
        
-      <Searchbox onChangeHandler={onSearchChange} placeholder="search Items" className="search-box" />
+      <Searchbox onChangeHandler={onSearchChange} placeholder="search Items" className="items-search-box" />
 
         <Itemlists Items={filteredItems} />
       </div>
