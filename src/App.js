@@ -59,7 +59,7 @@ export default class App extends Component {
             );
           })}*/}
 
-          <Itemlists />
+          <Itemlists Items ={filteredItems}/>
       </div>
     );
   }

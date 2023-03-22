@@ -2,9 +2,16 @@ import React, { Component } from 'react'
 
 export default class Itemlists extends Component {
   render() {
+
+    const {items} = this.props;
     return (
-      <div><br></br>
-      Hello this is the rendered item lists</div>
+      <div>
+      {items.map((item => (
+        <div key={item.id}>
+        <h1>{item.title}</h1>
+        </div>
+      )))}
+      </div>
     )
   }
 }
