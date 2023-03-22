@@ -51,15 +51,8 @@ export default class App extends Component {
           placeholder="Find items"
           onChange={onSearchChange}
         />
-          {/*{filteredItems.map((item) => {
-            return (
-              <div key={item.id}>
-                <h1>{item.title}</h1>
-              </div>
-            );
-          })}*/}
 
-          <Itemlists Items ={filteredItems}/>
+        <Itemlists Items={filteredItems} />
       </div>
     );
   }
