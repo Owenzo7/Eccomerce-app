@@ -8,10 +8,7 @@ export default class Itemlists extends Component {
     return (
       <div className="card-list">
         {Items.map((item) => {
-         
-          return (
-            <ItemCard item={item} />
-          );
+          return <ItemCard item={item} />;
         })}
       </div>
     );

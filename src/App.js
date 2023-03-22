@@ -46,6 +46,7 @@ export default class App extends Component {
     });
     return (
       <div className="App">
+      <h1 className="app-title">Rogers Eccomerce Store</h1>
        
       <Searchbox onChangeHandler={onSearchChange} placeholder="search Items" className="items-search-box" />
 
