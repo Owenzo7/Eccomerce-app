@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import ItemCard from "../ItemCard/itemcard.component";
 import "./Item-list.styles.css";
 
 export default class Itemlists extends Component {
@@ -7,13 +8,9 @@ export default class Itemlists extends Component {
     return (
       <div className="card-list">
         {Items.map((item) => {
-          const { id, description, image, title } = item;
+         
           return (
-            <div className="card-container" key={id}>
-              <img alt={`item${title}`} src={image} width={180} height={180} />
-              <h2>{title}</h2>
-              <p>{description}</p>
-            </div>
+            <ItemCard item={item} />
           );
         })}
       </div>
