@@ -1,15 +1,30 @@
 import "./App.css";
-import React, { Component } from "react";
+import { useState } from "react";
 import Itemlists from "./Components/Itemlists/Itemlists.component";
 import Searchbox from "./Components/SearchBox/Searchbox.component";
 
 const App = () => {
+  const [searchField, setsearchField] = useState("")
+
+  console.log({searchField})
+
+  const onSearchChange = (event) => {
+    console.log(event.target.value);
+
+    const searchFieldString = event.target.value.toLocaleLowerCase();
+
+    setsearchField(searchFieldString);
+
+    
+  };
+
+
   return (
     <div className="App">
       <h1 className="app-title">Rogers Eccomerce Store</h1>
 
-      {/* <Searchbox onChangeHandler={onSearchChange} placeholder="search Items" className="items-search-box" /> */}
-      {/*  */}
+      <Searchbox onChangeHandler={onSearchChange} placeholder="search Items" className="items-search-box" />
+
       {/* <Itemlists Items={filteredItems} /> */}
     </div>
   );
