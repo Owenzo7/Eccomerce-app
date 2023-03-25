@@ -1,15 +1,26 @@
 import "./App.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Itemlists from "./Components/Itemlists/Itemlists.component";
 import Searchbox from "./Components/SearchBox/Searchbox.component";
 
 const App = () => {
   const [searchField, setsearchField] = useState("");
   const [items, setitems] = useState([]);
+  const [filteredItems, setfilteredItems] = useState(items);
 
-  fetch("https://fakestoreapi.com/products")
-    .then((response) => response.json())
-    .then((users) => setitems(users));
+  useEffect(() => {
+    fetch("https://fakestoreapi.com/products")
+      .then((response) => response.json())
+      .then((users) => setitems(users));
+  }, []);
+
+  useEffect(() => {
+    const NewfilteredItems = items.filter((item) => {
+      return item.title.toLocaleLowerCase().includes(searchField);
+    });
+
+    setfilteredItems(NewfilteredItems);
+  }, [items, searchField]);
 
   console.log({ searchField });
 
@@ -20,10 +31,6 @@ const App = () => {
 
     setsearchField(searchFieldString);
   };
-
-  const filteredItems = items.filter((item) => {
-    return item.title.toLocaleLowerCase().includes(searchField);
-  });
 
   return (
     <div className="App">
